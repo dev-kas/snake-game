@@ -47,8 +47,11 @@ int main() {
         fruit.y = GetRandomValue(0, COLS - 1);
         tails[length] = snake;
         length++;
-        if (length >= (ROWS * COLS))
-          length = 0;
+        if (length >= (ROWS * COLS)) {
+          TakeScreenshot(
+              TextFormat("win_%d.png", GetRandomValue(10000, 99999)));
+          break;
+        }
       }
 
       for (int i = length; i >= 0; i--) {
