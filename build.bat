@@ -1,0 +1,10 @@
+gcc main.c ^
+-o program.exe ^
+-I C:\raylib\raylib\src ^
+-L C:\raylib\raylib\src ^
+-lraylib ^
+-lopengl32 -lgdi32 -lwinmm
+
+IF %ERRORLEVEL% EQU 0 (
+	.\program.exe
+)
