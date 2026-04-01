@@ -10,31 +10,32 @@ int main() {
   int frames = 0;
 
   Vector2 snake = {0, 0};
-  Vector2 speed = {1, 0};
+  Vector2 speed = {0, 0};
+  Vector2 speedintent = {1, 0};
   Vector2 fruit = {GetRandomValue(0, ROWS - 1), GetRandomValue(0, COLS - 1)};
-  Vector2 tails[32];
+  Vector2 tails[ROWS * COLS];
   int length = 0;
 
   while (!WindowShouldClose()) {
     // input
     if (IsKeyPressed(KEY_LEFT) && speed.x != 1) {
-      speed.x = -1;
-      speed.y = 0;
+      speedintent.x = -1;
+      speedintent.y = 0;
     }
 
     if (IsKeyPressed(KEY_RIGHT) && speed.x != -1) {
-      speed.x = 1;
-      speed.y = 0;
+      speedintent.x = 1;
+      speedintent.y = 0;
     }
 
     if (IsKeyPressed(KEY_DOWN) && speed.y != -1) {
-      speed.x = 0;
-      speed.y = 1;
+      speedintent.x = 0;
+      speedintent.y = 1;
     }
 
     if (IsKeyPressed(KEY_UP) && speed.y != 1) {
-      speed.x = 0;
-      speed.y = -1;
+      speedintent.x = 0;
+      speedintent.y = -1;
     }
 
     // physics
@@ -46,7 +47,7 @@ int main() {
         fruit.y = GetRandomValue(0, COLS - 1);
         tails[length] = snake;
         length++;
-        if (length >= 32)
+        if (length >= (ROWS * COLS))
           length = 0;
       }
 
@@ -57,6 +58,9 @@ int main() {
           tails[i] = tails[i - 1];
         }
       }
+
+      speed.x = speedintent.x;
+      speed.y = speedintent.y;
 
       snake.x += speed.x;
       snake.y += speed.y;
