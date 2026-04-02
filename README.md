@@ -144,4 +144,6 @@ Also, let’s be honest — “I hacked my own snake game” sounds cooler than 
 
 MIT — do whatever you want, just don’t blame me when you start injecting into everything like it’s a personality trait.
 
+---
+
 *README.md generated with ChatGPT*
